@@ -1,37 +1,79 @@
 //Load Modules
-var mysql = require("mysql");
 var inquirer = require("inquirer");
 var customer = require("./bamazonCustomer");
 var manager = require("./bamazonManager");
 var supervisor = require("./bamazonSupervisor");
 
-//Create Connection
-var connection = mysql.createConnection({
-  host: "localhost",
+//Prompt user to select Item
 
-  // Your port; if not 3306
-  port: 3306,
+function start() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "user",
+        message: "Welcome to Bamazon, please select from the following options",
+        choices: ["Customer", "Manager", "Supervisor"],
+      },
+    ])
+    .then((answers) => {
+      if (answers.user === "Customer") {
+        //Run Customer App
+        customer.queryProducts();
+      } else if (answers.user === "Manager") {
+        //Run PW Manager Prompt
+        inquirer
+          .prompt([
+            {
+              type: "password",
+              message: "Enter a password",
+              mask: "*",
+              name: "password",
+            },
+          ])
+          .then(function (answers) {
+            if (answers.password === "password") {
+              console.log("Welcome Manager");
+              //Run Manager App here
+              manager.managerMenu();
+            } else {
+              console.log("access denied");
+              start();
+            }
+          })
+          .catch();
+      } else if (answers.user === "Supervisor") {
+        //Run PW Supervisor Prompt
+        inquirer
+          .prompt([
+            {
+              type: "password",
+              message: "Enter a password",
+              mask: "*",
+              name: "password",
+            },
+          ])
+          .then(function (answers) {
+            if (answers.password === "password") {
+              console.log("Welcome Supervisor");
+              //Run Supervisor App Here
+            } else {
+              console.log("Access Denied");
+              start();
+            }
+          })
+          .catch();
+      }
+    })
+    .catch((error) => {});
+}
 
-  // Your username
-  user: "root",
+function quit() {
+  console.log("Thank you for using Bamazon CLI");
+  process.exit();
+}
 
-  // Your password
-  password: "password",
+//exports
+exports.quit = quit;
 
-  //Name of Database
-  database: "bamazon",
-});
-
-//Start Connection
-connection.connect(function (err) {
-  if (err) throw err;
-  console.log("connected as id " + connection.threadId);
-
-  ////
-  //RUN CODE HERE
-  //
-  ////
-  customer.queryProducts();
-
-  connection.end();
-});
+start();
