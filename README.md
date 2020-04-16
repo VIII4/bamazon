@@ -29,4 +29,7 @@ When user selects Manager app will:
 -provide manager menu to view and adjust inventory
 
 Here is a link to a video of the app in use:
-[bamazonCustomer.js in action]() _(on the linked page, click on "View raw" to get the video.)_
+[bamazonCustomer.js in action]( [link text](https://drive.google.com/file/d/1Cd9uLDYGX4Kz1tnB0m7JY-vdpN6Bt2WR/view "Bamazon Demo") )
+
+**Alternatively (https://github.com/aaron-G18/Marketplace_DB/blob/master/vid)
+_(on the linked page, click on "View raw" to get the video.)_**
