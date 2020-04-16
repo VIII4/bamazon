@@ -28,8 +28,7 @@ When user selects Manager app will:
 -prompt for password (password: "password")
 -provide manager menu to view and adjust inventory
 
-Here is a link to a video of the app in use:
-[bamazonCustomer.js in action]( [link Demo](https://drive.google.com/file/d/1Cd9uLDYGX4Kz1tnB0m7JY-vdpN6Bt2WR/view "Bamazon Demo") )
+Here is a link to a video of the app in use: ( [link Demo](https://drive.google.com/file/d/1Cd9uLDYGX4Kz1tnB0m7JY-vdpN6Bt2WR/view "Bamazon Demo") )
 
 **Alternatively (https://github.com/VIII4/bamazon/blob/master/vid/IJL_bamazon_demo.webm)
 _(on the linked page, click on "View raw" to get the video.)_**
